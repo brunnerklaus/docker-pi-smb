@@ -119,4 +119,4 @@ EOH
 
 fi
 nmbd -D
-exec ionice -c 3 smbd -FS --configfile="$CONFIG_FILE" < /dev/null
+exec ionice -c 3 smbd -FS --configfile="$CONFIG_FILE" --no-process-group < /dev/null
