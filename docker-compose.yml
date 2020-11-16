@@ -1,0 +1,26 @@
+version: '3.7'
+
+volumes:
+  rpishare_data: {}
+
+services:
+  rpishare:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: rpishare
+    restart: always
+    ports:
+      - 137:137/tcp
+      - 137:137/udp
+      - 138:138/tcp
+      - 138:138/udp
+      - 139:139
+      - 445:445
+      - 445:445/udp
+    hostname: rpi-samba
+    volumes:
+      - rpishare_data:/share/data
+      - /usr/share/zoneinfo/Europe/Berlin:/etc/localtime
+    command: -u "user:password" -u "user2:password" -s "rpishare:/share/data:rw:user,user2" -s "Documents (readonly):/share/data/documents:ro:user,user2"
+    restart: unless-stopped
