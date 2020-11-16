@@ -9,7 +9,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     container_name: pishare
-    restart: always
+    image: pishare:latest
     ports:
       - 137:137/tcp
       - 137:137/udp
