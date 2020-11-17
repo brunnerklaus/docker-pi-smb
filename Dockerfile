@@ -1,4 +1,5 @@
 FROM alpine:latest
+LABEL Description="Simple and lightweight Samba docker container, based on Alpine Linux."
 
 RUN apk update && apk upgrade && apk add bash samba-common-tools samba && rm -rf /var/cache/apk/*
 
