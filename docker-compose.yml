@@ -22,5 +22,5 @@ services:
     volumes:
       - pi_share:/share/data
       - /usr/share/zoneinfo/Europe/Berlin:/etc/localtime
-    command: -u "user:password" -u "user2:password" -s "pishare:/share/data:rw:user,user2" -s "Documents (readonly):/share/data/documents:ro:user,user2"
+    command: -u "${USERNAME:-user}:${PASSWORD:-password}" -s "pishare:/share/data:rw:${USERNAME:-user}"
     restart: unless-stopped
